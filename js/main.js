@@ -20,7 +20,7 @@ let years;
 //| Calcolo il tempo (i millisecondi da 01/01/1970 a 24/08/2023 alle 09.30 )
 
 // * Inserisco la data e ora fine countdown
-const dateEndCountdown = new Date(2023, 7, 23, 16, 0, 0, 0);
+const dateEndCountdown = new Date(2023, 7, 24, 9, 30, 0, 0);
 console.log(dateEndCountdown);
 // * Concolo i millisecondi da 01/01/1970 fino a data fine countdown
 let timeEndCountdown = dateEndCountdown.getTime();
@@ -40,12 +40,43 @@ console.log(timeNow);
 let timeCountdown = timeEndCountdown - timeNow;
 console.log(timeCountdown);
 
+countdownTimer(timeCountdown);
+
+// | Countdown
+
 const countdown = setInterval(function () {
-  timeCountdown--;
+  timeCountdown = timeCountdown - second;
+
+  countdownTimer(timeCountdown);
+
+  countMinutes.innerText = minutes;
 
   if (timeCountdown <= 0) {
     clearInterval(countdown);
+    alert("CoundDown finito");
   }
 
-  console.log(countdown);
+  console.log(timeCountdown);
 }, 1000);
+
+// |Funzione creazione tempo leggibile
+
+function countdownTimer(timeCountdown) {
+  days = parseInt(timeCountdown / day);
+  console.log(days);
+  countDays.innerText = days;
+
+  hours = parseInt((timeCountdown % day) / hour);
+  console.log(hours);
+  countHours.innerText = hours;
+
+  minutes = parseInt(((timeCountdown % day) % hour) / minute);
+  console.log(minutes);
+  countMinutes.innerText = minutes;
+
+  seconds = parseInt((((timeCountdown % day) % hour) % minute) / second);
+  console.log(seconds);
+  countSeconds.innerText = seconds;
+
+  console.log(timeCountdown);
+}
