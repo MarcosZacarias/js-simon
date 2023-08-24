@@ -40,6 +40,10 @@ console.log(timeNow);
 let timeCountdown = timeEndCountdown - timeNow;
 console.log(timeCountdown);
 
+if (timeCountdown >= 0) {
+  countdownTimer(timeCountdown);
+}
+
 // | Countdown
 
 const countdown = setInterval(function () {
