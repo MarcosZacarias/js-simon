@@ -40,20 +40,16 @@ console.log(timeNow);
 let timeCountdown = timeEndCountdown - timeNow;
 console.log(timeCountdown);
 
-countdownTimer(timeCountdown);
-
 // | Countdown
 
 const countdown = setInterval(function () {
   timeCountdown = timeCountdown - second;
 
-  countdownTimer(timeCountdown);
-
-  countMinutes.innerText = minutes;
-
   if (timeCountdown <= 0) {
     clearInterval(countdown);
     alert("CoundDown finito");
+  } else {
+    countdownTimer(timeCountdown);
   }
 
   console.log(timeCountdown);
